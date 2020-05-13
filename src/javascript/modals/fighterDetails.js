@@ -1,5 +1,6 @@
-import { createElement, customAddhtml, makeAttributesEasy } from '../helpers/domHelper';
+import { createElement, customAddhtml, makeAttributesEasy, addStatusBar } from '../helpers/domHelper';
 import { showModal } from './modal';
+import { MAX_ATTACK, MAX_DEFENCE, MAX_HEALTH } from '../constants/fightersConstants'
 
 export function showFighterDetailsModal(fighter) {
   const title = 'Fighter info';
@@ -11,14 +12,14 @@ function createFighterDetails(fighter) {
   const { name, source, attack, defense, health } = fighter;
 
   const fighterDetails = makeAttributesEasy('div', 'modal-body'
-    , { style: 'font-family: cursive;' });
+    , { style: 'font-family: cursive; display: inline-block;' });
 
   const fighterDetailsData = makeAttributesEasy('div', 'modal-body-data', {
-    style: ""
+    style: "display:inline-grid;"
   });
 
   const fighterDetailsImg = makeAttributesEasy('div', 'modal-body-image', {
-    style: "height: 15rem;"
+    style: "height: 15rem;float: right;width: fit-content;-moz-transform: scale(-1, 1);-webkit-transform: scale(-1, 1);-o-transform: scale(-1, 1);transform: scale(-1, 1);"
   });
 
   const elementDetailsData = [
@@ -27,9 +28,15 @@ function createFighterDetails(fighter) {
 
     , customAddhtml(createElement({ tagName: 'span', className: 'info-modal-fighter-attack' }), attack)
 
-    , customAddhtml(createElement({ tagName: 'span', className: 'info-modal-fighter-defence' }), defense)
+    , addStatusBar(attack, MAX_ATTACK)
+
+    , customAddhtml(createElement({ tagName: 'span', className: 'info-modal-fighter-defense' }), defense)
+
+    , addStatusBar(defense, MAX_DEFENCE)
 
     , customAddhtml(createElement({ tagName: 'span', className: 'info-modal-fighter-health' }), health)
+
+    , addStatusBar(health, MAX_HEALTH)
 
   ]
 
@@ -43,5 +50,6 @@ function createFighterDetails(fighter) {
 
   fighterDetails.append(fighterDetailsData)
   fighterDetails.append(fighterDetailsImg)
+
   return fighterDetails
 }

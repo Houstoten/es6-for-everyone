@@ -31,7 +31,7 @@ body {
 }
 
 .fighter:hover {
-    box-shadow: 0 0 50px 10px rgba(0,0,0,0.06);
+    box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.06);
     cursor: pointer;
 }
 
@@ -68,13 +68,13 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: rgba(128,128,128,0.6);
+    background-color: rgba(128, 128, 128, 0.6);
 }
 
 .modal-root {
     display: flex;
     flex-direction: column;
-    border: 1px solid rgba(0,0,0,.2);
+    border: 1px solid rgba(0, 0, 0, .2);
     border-radius: .3rem;
     background-color: white;
 }
@@ -96,8 +96,32 @@ body {
     padding: 1rem;
 }
 
-.modal-body .info-modal-fighter-name{
+.info-modal-fighter-name,
+.info-modal-fighter-attack,
+.info-modal-fighter-defense,
+.info-modal-fighter-health {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    width: 5rem;
+}
 
+.info-modal-fighter-name:before{
+    content: 'Name:';
+    padding-right: 5px;
+}
+.info-modal-fighter-attack:before{
+    content: 'Power:';
+    padding-right: 5px;
+}
+.info-modal-fighter-defense:before{
+    content: 'Defence:';
+    padding-right: 5px;
+}
+.info-modal-fighter-health:before{
+    content: 'Health:';
+    padding-right: 5px;
 }
 
 .close-btn {
@@ -119,7 +143,7 @@ body {
     -ms-user-select: none;
     user-select: none;
 }
-  
+
 .custom-checkbox input {
     position: absolute;
     opacity: 0;
@@ -127,7 +151,7 @@ body {
     height: 0;
     width: 0;
 }
-  
+
 .checkmark {
     position: absolute;
     top: 0;
@@ -136,22 +160,22 @@ body {
     width: 25px;
     background-color: #eee;
 }
-  
-.custom-checkbox:hover input ~ .checkmark {
+
+.custom-checkbox:hover input~.checkmark {
     background-color: #ccc;
 }
-  
-.custom-checkbox input:checked ~ .checkmark {
+
+.custom-checkbox input:checked~.checkmark {
     background-color: #2196F3;
 }
-  
+
 .checkmark:after {
     content: "";
     position: absolute;
     display: none;
 }
-  
-.custom-checkbox input:checked ~ .checkmark:after {
+
+.custom-checkbox input:checked~.checkmark:after {
     display: block;
 }
 

@@ -4,7 +4,11 @@ import { getFighterDetails } from '../services/fightersService';
 
 class BattleLog {
     createBattleLog(leftFighter, rightFighter) {
-        alert(leftFighter.name + " " + rightFighter.name)
+        const title = "Battle Log"
+        const bodyElement = {}
+    }
+    updateBattleLog(){
+
     }
 
     onCritical() {
