@@ -16,7 +16,7 @@ export async function fight(firstFighter, secondFighter) {
     swapFighter()
     damage = getDamage(nowFighter, nowReciever)
     nowReciever.health -= damage
-    battleLog.onDamage(nowFighter, nowReciever, damage)
+    battleLog.onDamage(nowFighter, nowReciever, damage.toFixed(3))
     await sleep(300)
   }
 
@@ -41,16 +41,16 @@ export function getDamage(attacker, enemy) {
 }
 
 export function getHitPower(fighter) {
-  const chance = Math.floor(1 + Math.random() * 2)
-  if (chance) {
+  const chance = 1 + Math.random() * 2
+  if (chance>=1.5) {
     battleLog.onCritical(fighter.name)
   }
   return fighter.attack * chance
 }
 
 export function getBlockPower(fighter) {
-  const chance = Math.floor(1 + Math.random() * 2)
-  if (chance) {
+  const chance = 1 + Math.random() * 2
+  if (chance>=1.5) {
     battleLog.onBlock(fighter.name)
   }
   return fighter.defense * chance
