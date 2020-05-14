@@ -12,7 +12,7 @@ export function fight(firstFighter, secondFighter) {//make async to battleLog
   }
   var damage;
   battleLog.createBattleLog(firstFighter, secondFighter)
-  while (nowFighter.health > 0 && nowReciever.health > 0 && document.getElementById('battleLog-data')) {
+  while (nowFighter.health > 0 && nowReciever.health > 0) {//&& document.getElementById('battleLog-data') add if want battleLog
     swapFighter()
     damage = getDamage(nowFighter, nowReciever)
     nowReciever.health -= damage
