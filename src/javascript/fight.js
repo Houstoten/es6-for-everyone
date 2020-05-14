@@ -22,7 +22,7 @@ export function fight(firstFighter, secondFighter) {//make async to battleLog
 
   console.log("No-way, winner is " + nowFighter.name)
   battleLog.closeBattleLog();
-  return nowFighter.name
+  return nowFighter
 }
 
 async function sleep(msec) {
