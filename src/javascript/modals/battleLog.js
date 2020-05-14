@@ -65,7 +65,7 @@ class BattleLog {
 
     onDamage(attacker, reciever, damage) {
         this.updateBattleLog(customAddhtml(createElement({ tagName: 'p', className: 'battleLog-initial' })
-            , attacker.name + " hits " + reciever.name + " and makes " + damage + " damage. Now " + reciever.name + " has " + reciever.health + " health!"))
+            , attacker.name + " hits " + reciever.name + " and makes " + damage + " damage. Now " + reciever.name + " has " + reciever.health.toFixed(3) + " health!"))
     }
 
     closeBattleLog() {
