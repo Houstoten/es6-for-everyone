@@ -49,7 +49,7 @@ class BattleLog {
 
     updateBattleLog(log) {
         if (document.getElementById('battleLog-data')) {
-            document.getElementById('battleLog-data').append(log);
+            document.getElementById('battleLog-data').prepend(log);
         }
     }
 

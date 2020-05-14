@@ -27,7 +27,9 @@ export async function getFighterInfo(fighterId) {
   if (fightersDetailsCache.has(fighterId)) {
     return fightersDetailsCache.get(fighterId);
   } else {
-    return await getFighterDetails(fighterId);
+    const fighterDetails = await getFighterDetails(fighterId);
+    fightersDetailsCache.set(fighterId, fighterDetails)
+    return fighterDetails
   }
 }
 
@@ -44,7 +46,7 @@ function createFightersSelector() {
     }
 
     if (selectedFighters.size === 2) {
-      const winner = fight(...selectedFighters.values());
+      const winner = await fight(...selectedFighters.values());
       showWinnerModal(winner);
     }
   }

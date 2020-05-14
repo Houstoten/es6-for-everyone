@@ -10,6 +10,6 @@ export function showWinnerModal(fighter) {
 function setBodyElement(img) {
     return makeAttributesEasy('img', 'battle-modal-fighter-image', {
         src: img
-        , style: "height: 20rem;"
+        , style: " margin-left: auto;margin-right: auto;height: 20rem;"
     });
 }
