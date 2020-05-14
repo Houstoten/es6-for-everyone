@@ -22,10 +22,7 @@ export async function fight(firstFighter, secondFighter) {
 
   console.log("No-way, winner is " + nowFighter.name)
   battleLog.closeBattleLog();
-  return nowFighter
-
-
-
+  return nowFighter.name
 }
 
 async function sleep(msec) {
@@ -41,7 +38,7 @@ export function getDamage(attacker, enemy) {
 }
 
 export function getHitPower(fighter) {
-  const chance = 1 + Math.random() * 2
+  const chance = 1 + Math.random()
   if (chance>=1.5) {
     battleLog.onCritical(fighter.name)
   }
@@ -49,7 +46,7 @@ export function getHitPower(fighter) {
 }
 
 export function getBlockPower(fighter) {
-  const chance = 1 + Math.random() * 2
+  const chance = 1 + Math.random()
   if (chance>=1.5) {
     battleLog.onBlock(fighter.name)
   }
