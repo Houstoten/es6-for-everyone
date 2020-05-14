@@ -107,6 +107,11 @@ body {
     width: 5rem;
 }
 
+.battleLog-initial{
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
 .info-modal-fighter-name:before{
     content: 'Name:';
     padding-right: 5px;

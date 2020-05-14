@@ -1,6 +1,6 @@
 import { battleLog } from "./modals/battleLog"
 
-export function fight(firstFighter, secondFighter) {
+export async function fight(firstFighter, secondFighter) {
   var nowFighter = Object.assign({}, secondFighter)
   var nowReciever = Object.assign({}, firstFighter)
   const swapFighter = function () {
@@ -8,14 +8,23 @@ export function fight(firstFighter, secondFighter) {
     nowFighter = nowReciever;
     nowReciever = temp;
   }
+  var damage;
   battleLog.createBattleLog(firstFighter, secondFighter)
-  while (nowFighter.health > 0 && nowReciever.health > 0) {
-    swapFighter()
-    nowReciever.health -= getDamage(nowFighter, nowReciever)
-    console.log(nowFighter.name + " " + nowFighter.health + ";  " + nowReciever.name + " " + nowReciever.health + ";  ")
+  return await battle()
+  function battle() {
+    while (nowFighter.health > 0 && nowReciever.health > 0) {
+      swapFighter()
+      damage = getDamage(nowFighter, nowReciever)
+      nowReciever.health -= damage
+      battleLog.onDamage(nowFighter, nowReciever, damage)
+      setTimeout(battle, 500)
+    }
+      console.log("No-way, winner is " + nowFighter.name)
+      battleLog.closeBattleLog();
+      return nowFighter
+    
   }
-  console.log("No-way, winner is " + nowFighter.name)
-  return nowFighter
+
 }
 
 
@@ -29,17 +38,17 @@ export function getDamage(attacker, enemy) {
 }
 
 export function getHitPower(fighter) {
-  const chance = Math.floor(Math.random() * 2)
+  const chance = Math.floor(1 + Math.random() * 2)
   if (chance) {
-    console.log("CRITICAL from " + fighter.name)
+    battleLog.onCritical(fighter.name)
   }
   return fighter.attack * chance
 }
 
 export function getBlockPower(fighter) {
-  const chance = Math.floor(Math.random() * 2)
+  const chance = Math.floor(1 + Math.random() * 2)
   if (chance) {
-    console.log("ULTRA BLOCK from " + fighter.name)
+    battleLog.onBlock(fighter.name)
   }
   return fighter.defense * chance
 }
