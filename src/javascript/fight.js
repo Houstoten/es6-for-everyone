@@ -2,7 +2,7 @@ import { battleLog } from "./modals/battleLog"
 
 
 
-export async function fight(firstFighter, secondFighter) {
+export function fight(firstFighter, secondFighter) {//make async to battleLog
   var nowFighter = Object.assign({}, secondFighter)
   var nowReciever = Object.assign({}, firstFighter)
   const swapFighter = function () {
@@ -17,7 +17,7 @@ export async function fight(firstFighter, secondFighter) {
     damage = getDamage(nowFighter, nowReciever)
     nowReciever.health -= damage
     battleLog.onDamage(nowFighter, nowReciever, damage.toFixed(3))
-    await sleep(300)
+    // await sleep(300) Use it if fight called in await context
   }
 
   console.log("No-way, winner is " + nowFighter.name)
