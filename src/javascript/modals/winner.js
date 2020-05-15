@@ -10,15 +10,16 @@ export function showWinnerModal(fighter) {
 
 function setBodyElement(fighter) {
     const fighterDetails = makeAttributesEasy('div', 'modal-body'
-    , { style: 'font-family: cursive; display: inline-block;' });
+        , { style: 'font-family: cursive; display: inline-block;' });
 
     const winnerIMG = makeAttributesEasy('img', 'battle-modal-fighter-image', {
         src: fighter.source
         , style: " margin-left: auto;margin-right: auto;height: 20rem;"
     })
-
-    const battleLogData = battleLogByWinner.get(fighter.id)
     fighterDetails.append(winnerIMG)
-    fighterDetails.append(battleLogData)
+    if (battleLogByWinner.has(fighter.id)) {
+        const battleLogData = battleLogByWinner.get(fighter.id)
+        fighterDetails.append(battleLogData)
+    }
     return fighterDetails
 }
