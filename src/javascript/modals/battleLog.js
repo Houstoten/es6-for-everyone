@@ -5,7 +5,7 @@ import { getFighterDetails } from '../services/fightersService';
 export var battleLogByWinner = new Map()
 
 class BattleLog {
-    
+
     createBattleLog() {
         this.bodyElement = this.setBodyElement()
     }
@@ -14,7 +14,7 @@ class BattleLog {
         const battle = makeAttributesEasy('div', 'modal-body'
             , { style: 'font-family: cursive; display: inline-block;' });
 
-        
+
 
         this.battleDataBlock = makeAttributesEasy('div', 'modal-body-battle-data', {
             style: "height: 20rem; float: left; width: 40rem; border: black solid 3px; overflow:auto; padding-left:1rem;"
@@ -27,9 +27,9 @@ class BattleLog {
     }
 
     updateBattleLog(log) {
-       
-            this.battleDataBlock.prepend(log);
-        
+
+        this.battleDataBlock.prepend(log);
+
     }
 
     onCritical(name) {
@@ -43,12 +43,13 @@ class BattleLog {
     }
 
     onDamage(attacker, reciever, damage) {
+        const showHealth = reciever.health > 0 ? reciever.health : 0
         this.updateBattleLog(customAddhtml(createElement({ tagName: 'p', className: 'battleLog-initial' })
-            , attacker.name + " hits " + reciever.name + " and makes " + damage + " damage. Now " + reciever.name + " has " + reciever.health.toFixed(3) + " health!"))
+            , attacker.name + " hits " + reciever.name + " and makes " + damage + " damage. Now " + reciever.name + " has " + showHealth.toFixed(3) + " health!"))
     }
 
     closeBattleLog(winnerID) {
-        battleLogByWinner.set(winnerID,this.bodyElement)
+        battleLogByWinner.set(winnerID, this.bodyElement)
     }
 }
 export const battleLog = new BattleLog(); 
