@@ -46,7 +46,7 @@ function createFightersSelector() {
     }
 
     if (selectedFighters.size === 2) {
-      const winner = fight(...selectedFighters.values());//set await to battleLog
+      const winner = fight(...selectedFighters.values());
       showWinnerModal(winner);
     }
   }
